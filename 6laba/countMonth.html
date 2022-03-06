@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <title>Прибыль</title>
+</head>
+<!--Создать функцию, определяющую количество месяцев, когда фирма работала в убыток.-->
+<body>
+    <script>
+        function showProfit(idSelect, idSpan) {
+            var profit = ['', 300, 100, 200, 500, 200, 300, 400, 500, 300, 100, 500, 200];
+            document.getElementById(idSpan).innerHTML = profit[idSelect.value];
+        }
+        function showCountLossMonth() {
+            var profit = ['', 300, 100, 200, 500, 200, 300, 400, 500, 300, 100, 500, 200];
+            var count = 0;
+            for (let i = 1; i < profit.length; i++) {
+                if (profit[i] < profit[i - 1]) {
+                    count++
+                }
+            }
+            document.getElementById("loss").value = count;
+        }
+    </script>
+    Прибыль за
+    <select onChange="showProfit(this,'profit')">
+        <option value="0"> - Выберите месяц -
+        <option value="1"> Январь
+        <option value="2"> Февраль
+        <option value="3"> Март
+        <option value="4"> Апрель
+        <option value="5"> Май
+        <option value="6"> Июнь
+        <option value="7"> Июль
+        <option value="8"> Август
+        <option value="9"> Сентябрь
+        <option value="10"> Октябрь
+        <option value="11"> Ноябрь
+        <option value="12"> Декабрь
+    </select>
+    равна: <span id="profit"></span>
+    <p>Количество убыточных месяцев<input type="text" id="loss"></p>
+    <input type="button" id="btn" value="Анализ" onclick="showCountLossMonth(this)">
+</body>
+
+</html>

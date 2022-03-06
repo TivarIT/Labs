@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <title>Вывод элементов массива</title>
+</head>
+<!--Пусть задан массив нечетной длины. Каким образом вывести на экран значение центрального элемента массива?-->
+<body>
+    <script>
+        function func() {
+            var array = [3, 4, 5, 6, 7, 1, 2];
+            document.getElementById("txt").value = array;
+            var lenght = array.length;
+            var element = (lenght - 1) / 2;
+            document.getElementById("txt2").value = array[element];
+        } 
+    </script>
+</body>
+<input type="text" id="txt">
+<input type="button" id="btn" value="Найти элемент по середине массива" onclick="func()">
+<input type="text" id="txt2" value="Элемент по середине">
+
+</html>

@@ -1,0 +1,57 @@
+<html>
+<!--Создать функцию, определяющую общую прибыль за год, на основании ее вывести сообщение о результате работы фирмы: 
+прибыльная или убыточная. При выводе массива отрицательную прибыль выделить синим цветом, а положительную – красным.-->
+<head>
+    <title>Прибыль</title>
+    <style type="text/css">
+        .loss {
+            background-color: #1900ff81
+        }
+
+        .profit {
+            background-color: #ff000081
+        }
+    </style>
+    <script>
+        function itog() {
+            var sum = 0;
+            for (i = 0; i < profitArr.length; i++) {
+                if (profitArr[i] > profitArr[i - 1]) {
+                    sum += Number(profitArr[i]);
+                }
+            }
+            document.getElementById("itogField").value = sum;
+        }
+        function itogOfYear() {
+            if (document.getElementById("itogField").value > 1500) {
+                alert("ЭТО УСПЕХ!!!1!!");
+            }
+            else {
+                alert("НАМ ПИСЕЦ!!!!11!1");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    Массив: <br>
+    <script>
+        var profitArr = ['', 300, 100, 200, 500, 200, 300, 400, 500, 300, 100, 500, 200];
+        document.write("<table border=1><tr>");
+        for (i = 0; i < profitArr.length; i++) {
+            document.write("<td ");
+            if (profitArr[i] > profitArr[i - 1]) {
+                document.write(" class='profit' ");
+            }
+            else {
+                document.write(" class='loss' ");
+            }
+            document.write(">" + profitArr[i] + "</td>");
+        }
+        document.write("</tr></table>"); 
+    </script>
+    <br>Годовая прибыль равна <input type="text" id="itogField" value="">
+    <input type="button" value="Посчитать" onclick="itog();itogOfYear();"><br>
+</body>
+
+</html>

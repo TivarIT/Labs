@@ -1,0 +1,33 @@
+<html>
+<!--Создать обработчик, который будет определять, какое из двух введенных в поля ввода чисел больше.-->
+<head>
+    <title>Оператор if</title>
+    <script>
+        function compare() {
+            if (parseInt(document.f.a.value) > parseInt(document.f.b.value)) {
+                document.getElementById("answer").innerHTML = "А больше Б.";
+            }
+            else if (parseInt(document.f.a.value) < parseInt(document.f.b.value)) {
+                document.getElementById("answer").innerHTML = "Б больше А.";
+            }
+            else document.getElementById("answer").innerHTML = "Значения равны.";
+        }
+    </script>
+</head>
+
+<body>
+    <form name="f">
+        <table>
+            <tr>
+                <td>A:<br></td>
+                <td><input type="text" value="" size="5" name="a"></td>
+                <td>B:<br></td>
+                <td><input type="text" value="" size="5" name="b"></td>
+                <td><input type="button" value="Сравнить" onclick="compare()"></td>
+            </tr>
+        </table>
+    </form>
+    <span id="answer"></span>
+</body>
+
+</html>

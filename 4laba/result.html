@@ -1,0 +1,60 @@
+<html>
+<!--Создать веб-страницу и поместить на нее кнопку, по нажатию на которую выводится надпись «Я знаю javascript!». Реализовать 
+на веб-странице возможность формирования бланка заказа.
+    Пользователь вводит количество единиц товара, которое он хочет заказать, скрипт вычисляет сумму, которую нужно заплатить 
+за каждый товар с учетом количества заказанных единиц и итоговую сумму. Пересчет будет производиться после того, как введено 
+количество, т. е. по событию onBlur у тега <INPUT>. Добавить возможность заказа карандашей стоимостью 1600.-->
+<head>
+    <script>
+        function pressButton(text) {
+            alert(text);
+        }
+        function getSumPen() {
+            var sumPen = Number(2000 * document.getElementById("PenField").value);
+            document.getElementById("PenFieldSum").value = sumPen;
+        }
+        function getSumPencil() {
+            var sumPencil = Number(1600 * document.getElementById("PencilField").value);
+            document.getElementById("PencilFieldSum").value = sumPencil;
+        }
+        function getItog() {
+            var itog = Number(document.getElementById("PenFieldSum").value) + Number(document.getElementById("PencilFieldSum").value);
+            document.getElementById("Itog").value = itog;
+        }
+    </script>
+</head>
+
+<body>
+    <table width="500" cellpadding="5" cellspacing="0">
+        <tr>
+            <td width="10"><strong>№</strong></td>
+            <td width="50"><strong>Название</strong></td>
+            <td width="80"><strong>Цена за ед.</strong></td>
+            <td width="50"><strong>Кол-во</strong></td>
+            <td width="50"><strong>Сумма</strong></td>
+        </tr>
+        <tr>
+            <td width="10">1</td>
+            <td width="50">Ручка</td>
+            <td width="80">2000</td>
+            <td width="50"><INPUT TYPE="number" id="PenField" onblur='getSumPen(this.value)'></td>
+            <td width="50"><INPUT TYPE="text" id="PenFieldSum"></td>
+        </tr>
+        <tr>
+            <td width="10">2</td>
+            <td width="50">Карандаш</td>
+            <td width="80">1600</td>
+            <td width="50"><INPUT TYPE="number" id="PencilField" onblur='getSumPencil(this.value)'></td>
+            <td width="50"><INPUT TYPE="text" id="PencilFieldSum"></td>
+        </tr>
+        <tr>
+            <td width="10"></td>
+            <td width="50"></td>
+            <td width="80"></td>
+            <td width="50"><strong>Итого:</strong></td>
+            <td width="50"><INPUT TYPE="text" id="Itog" onmouseover="getItog(this.value)"></td>
+        </tr>
+        <INPUT TYPE="button" VALUE="Click" onClick="pressButton('Я знаю JavaScript!')">
+</body>
+
+</html>

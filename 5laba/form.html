@@ -1,0 +1,110 @@
+<html>
+<!--    В спортивном клубе существуют четыре программы «вт. 18-00, пт. 18-00» – стоимость 300, «пн. 9-00, чт. 9-00» – 
+    стоимость 200, «пн. 18-00, чт. 18-00» – стоимость 300, «ср. 18-00, вс. 9- 00» – стоимость 250, на которые клиенты 
+    могут покупать абонементы. Клиентам, имеющим дисконтную карту, предоставляется на абонемент скидка 10 %. Создать 
+    скрипт, позволяющий рассчитать стоимость и сформировать бланк заказа абонемента.
+        Модифицировать html-страницу и разработанный скрипт в связи с изменившимися условиями. В спортивном клубе проводится 
+    рекламная акция: при покупке нескольких абонементов на второй и последующий абонементы предоставляется скидка 10 % 
+    (наличие скидки по дисконтной карте сохраняется).
+        Реализовать ограничение: клиент может заказать не более трех абонементов. При заказе более трех абонементов выводить сообщение 
+    об ошибке.-->
+<head>
+    <title>Тренировки</title>
+</head>
+<script>
+    function funcPrice() {
+        switch (document.f.season.value) {
+            case "": priceField.value = ""; break;
+            case "0": priceField.value = 300; break;
+            case "1": priceField.value = 200; break;
+            case "2": priceField.value = 300; break;
+            case "3": priceField.value = 250; break;
+        }
+    }
+    function funcBtn() {
+        if (document.f.checkboxid.checked) {
+            funcWithDiscount();
+        } else {
+            funcWithoutDiscount();
+        }
+    }
+    function funcError() {
+        if (countField.value > 3) {
+            alert("ПРИТОРМОЗИ!!! Не больше трёх за раз, жидяра!");
+        }
+    }
+    function funcWithDiscount() {
+        document.getElementById("itogField").value = Number(document.getElementById("priceField").value) * Number(document.getElementById("countField").value) - Number(document.getElementById("discountField").value);
+        funcCheckbox();
+    }
+    function funcWithoutDiscount() {
+        document.getElementById("itogField").value = Number(document.getElementById("priceField").value) * Number(document.getElementById("countField").value) - Number(document.getElementById("discountField").value);
+        funcCheckbox();
+    }
+    function funcCheckbox() {
+        if (document.f.checkboxid.checked) {
+            funcDiscountChecked();
+        } else {
+            funcDiscountUnchecked();
+        }
+    }
+    function funcDiscountChecked() {
+        var price = document.getElementById("priceField").value;
+        var discount = price * 0.10;
+        var discountDouble = price * 0.20;
+        switch (countField.value) {
+            case "1": discountField.value = discount; break;
+            case "2": discountField.value = discount + discountDouble; break;
+            case "3": discountField.value = discount + discountDouble * 2; break;
+        }
+    }
+    function funcDiscountUnchecked() {
+        var price = document.getElementById("priceField").value;
+        var discount = price * 0.10;
+        switch (countField.value) {
+            case "1": discountField.value = "0"; break;
+            case "2": discountField.value = discount; break;
+            case "3": discountField.value = discount * 2; break;
+        }
+    }  
+</script>
+
+<body>
+    <form name="f">
+        <table width="300">
+            <tr>
+                <td><select name="season" onchange="funcPrice()">
+                        <option value="">Выбрать программу</option>
+                        <option value="0">вт. 18-00, пт. 18-00</option>
+                        <option value="1">пн. 9-00, чт. 9-00</option>
+                        <option value="2">пн. 18-00, чт. 18-00</option>
+                        <option value="3">ср. 18-00, вс. 9-00</option>
+                    </select>
+                </td>
+            </tr>
+    </form>
+    <tr>
+        <td>Стоимость:</td>
+        <td><input type="text" id="priceField"></td>
+    </tr>
+    <tr>
+        <td>Количество абонементов (не более 3):</td>
+        <td>
+            <input type="number" id="countField" value="1" onchange="funcError();">
+        </td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="checkboxid" onclick="funcCheckbox()">Наличие дисконтной карты</td>
+    </tr>
+    <tr>
+        <td>Размер скидки:</td>
+        <td><input type="text" id="discountField"></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="Итого:" onclick="funcBtn()"></td>
+        <td><input type="text" id="itogField"></td>
+    </tr>
+    </table>
+</body>
+<!--Есть баг. Для точного результата требуется несколько раз нажать на кнопку "Итого:"-->
+</html>

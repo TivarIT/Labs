@@ -1,0 +1,44 @@
+<html>
+<!--Создать модельный ряд на заданную преподавателем тематику (книги)-->
+
+<head>
+    <title>Книги</title>
+    <style type="text/CSS">
+        img.p{
+      border:4px #fff solid;}
+      img.p:hover{
+      border:4px #fc0 solid;}
+      div.hide{ 
+      visibility: hidden}
+      div.vis{
+      position: absolute; 
+      left: 10px;
+      top: 350px;
+      width: 100px;
+      height: 55;
+      border: 6px #fc0 solid;
+      visibility: visible}
+      </style>
+    <script>
+        Books = ["Майк Брукс - Альфарий: Голова Гидры", "Гай Хейли – Доспех Судьбы", "Гай Хейли – Темный Империум"];
+
+        function over(i) { //функция показывает описание
+            document.getElementById("inf").className = "vis";
+            document.getElementById("inf").innerHTML = Books[i];
+        }
+
+        function out() { //функция скрывает описание 
+            document.getElementById("inf").innerHTML = "Выберите книгу.";
+            document.getElementById("inf").className = "hide";
+        }
+    </script>
+</head>
+
+<body>
+    <img src="img/alpha.jpg" width="200" height="300" class="p" onMouseOver="over(0)" onMouseOut="out()">
+    <img src="img/armorFate.jpg" width="200" height="300" class="p" onMouseOver="over(1)" onMouseOut="out()">
+    <img src="img/darkEmp.jpg" width="200" height="300" class="p" onMouseOver="over(2)" onMouseOut="out()">
+    <div class="hide" id="inf">Выберите книгу.</div>
+</body>
+
+</html>

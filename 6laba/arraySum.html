@@ -1,0 +1,51 @@
+<html>
+
+<head>
+  <style type="text/css">
+    .even {
+      /*стиль для четной ячейки*/
+      background-color: #FFFFFF
+    }
+
+    .odd {
+      /*стиль для нечетной ячейки*/
+      background-color: #ccccff
+    }
+  </style>
+  <script>
+    function sumOfElemMoreZ(z) {
+      var S = 0; //сумма
+      var k = 0; //счетчик элементов больших z
+      for (i = 0; i < x.length; i++) {
+        if (x[i] > parseInt(z)) {//если нашли элемент больших z
+          S = S + x[i]; //увеличиваем сумму
+          k++; //увеличиваем счетчик
+        }
+      }
+      //выводим результат
+      document.getElementById("answer").innerHTML =
+        (k == 0) ? "Элементов больших Z в массиве нет!" : "Сумма элементов массива больших Z: " + S;
+    }
+  </script>
+</head>
+
+<body>
+  Массив: <br>
+  <script>
+    var x = [50, 100, 150, 250, 300, 350, 300, 250]; // описание массива Х
+    document.write("<table border=1><tr>");// вывод заголовка таблицы
+    for (i = 0; i < x.length; i++) { // вывод строки таблицы
+      document.write("<td ");
+      // определение четности ячейки и установка нужного стиля
+      if (i % 2) document.write(" class='odd' ");
+      else document.write(" class='even' ");
+      document.write(">" + x[i] + "</td>");
+    }// конец вывода строки таблицы
+    document.write("</tr></table>"); // вывод окончания таблицы
+  </script>
+  <br>Z: <input type="text" value="" size="4" id=z>
+  <input type="button" value="Посчитать" onclick="sumOfElemMoreZ(getElementById('z').value)"><br>
+  <span id="answer"></span>
+</body>
+
+</html>
